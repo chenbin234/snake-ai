@@ -14,8 +14,8 @@ from sb3_contrib.common.wrappers import ActionMasker
 from snake_game_custom_wrapper_cnn import SnakeEnv
 
 if torch.backends.mps.is_available():
-    NUM_ENV = 5
-    # NUM_ENV = 32 * 2
+    # NUM_ENV = 5
+    NUM_ENV = 32 * 2
 else:
     NUM_ENV = 32
 LOG_DIR = "logs"
@@ -112,7 +112,7 @@ def main():
         sys.stdout = log_file
 
         model.learn(
-            total_timesteps=int(1000000),
+            total_timesteps=int(100000000),
             callback=[checkpoint_callback]
         )
         env.close()
